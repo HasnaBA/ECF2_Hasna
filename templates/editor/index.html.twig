@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="container mt-3">
+    <div class="card mb-3" style="max-width: 100%;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="{{game.cover}}" class="card-img" alt="image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ game.name }}</h5>
+                    <p class="card-text">{{ game.description }}</p>
+                    <p class="card-text"><small class="text-muted">sortie: <span class="date"> </span></small></p>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <table class="table">
+     
+        <tbody>
+            <tr>
+                <th scope="col">Editor(s) / Développeur(s)</th>
+                <td scope="col">UMEO Studios</td>
+            </tr>
+                       
+            <tr>
+                <th Sortie>Sortie</th></td>
+                <td>{{game.date|date("d/m/Y")}}</td>
+            
+            </tr>
+            <tr>
+                <th scope="row">classification </th>
+                <td>{{game.classification}}</td>
+            
+            </tr>
+            <tr>
+                <th scope="row">Jeuxvideo.com</th>
+            
+                <td><a href="{{ path('game', { id: game.id }) }}">{{ game.link }}En savoir plus</a></td>
+            
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
