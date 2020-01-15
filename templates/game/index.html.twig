@@ -1,50 +1,37 @@
-{% extends 'base.html.twig' %} 
+{% extends 'base.html.twig' %}
 
 {% block title %}Jeux vidéo{% endblock %}
 
 {% block stylesheets %}
 <style>
- 
-    
-   #menu {
+    #menu {
         color: #fff;
         position: relative;
-        font-family: Oswald,sans-serif;
+        font-family: Oswald, sans-serif;
         font-size: 1.3rem;
         line-height: 3rem;
         text-align: center;
         text-transform: uppercase;
         padding: 10px 0;
         padding-top: 0;
-      
+
     }
-   
+
 
     h1 {
         margin-top: 50Px;
         margin-bottom: 50px;
-       
+
         font-weight: bold;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        text-transform:uppercase;
+        text-transform: uppercase;
 
     }
-    h5,.date {
+
+    h5,
+    .date {
         font-weight: bold;
     }
-    footer {
-        background-color: rgb(51, 50, 50);
-        width:100%;
-        color:#fff;
-        height: 50px;
-        text-align: center;
-        display:flex;
-        align-items:center;
-
-
-    }
-   
-        
 </style>
 
 {% endblock %}
@@ -56,28 +43,29 @@
 
 
 <div class="container">
-        
+
     <h1>Liste des jeux</h1>
     {% for games in game %}
-        <div class="card mb-3" style="max-width: 100%;">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="{{games.cover}}" class="card-img" alt="image">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{{ path('games', { id: games.id }) }}">{{ games.name }}</a></h5>
-                        <p class="card-text">{{ games.description }}</p>
-                        <p class="card-text"><small class="text-muted">sortie: <span class="date"> {{games.date|date("d/m/Y")}}</span></small></p>
-                    </div>
-                </div>
+    <div class="card mb-3" style="max-width: 100%;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="{{games.cover}}" class="card-img" alt="image">
             </div>
-            <div class="card-body">
-                <h5 class="card-title" style="text-align:center; color: green">{{games.review}}/20</h5>
-                   
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ path('games', { id: games.id }) }}">{{ games.name }}</a></h5>
+                    <p class="card-text">{{ games.description }}</p>
+                    <p class="card-text"><small class="text-muted">sortie: <span class="date">
+                                {{games.date|date("d/m/Y")}}</span></small></p>
+                </div>
             </div>
         </div>
-      
+        <div class="card-body">
+            <h5 class="card-title" style="text-align:center; color: green">{{games.review}}/20</h5>
+
+        </div>
+    </div>
+
     {% endfor %}
     <div class="row">
         {{ knp_pagination_render(game)}}
